@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSONP解决跨域</title>
+    <style media="screen">
+        #wrap{
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap"></div>
+</body>
+
+<!-- <script type="text/javascript">
+
+    function change() {
+
+    }
+
+</script>
+
+<script src="http://localhost/teach/php_kuayu.php?user=aaa&pwd=bbb&call=change" charset="utf-8"></script> -->
+
+<script type="text/javascript">
+    // 跨域请求的另外一种写法
+    var wrap = document.querySelector('#wrap');
+    wrap.onclick = function () {
+        // 点击进行跨域请求
+        var s = document.createElement('script');
+        s.setAttribute('type',"text/javascript");
+        s.setAttribute('src',"http://localhost/teach/php_kuayu.php?call=change");
+        document.body.appendChild(s);
+        window.change = function () {
+
+        }
+    }
+
+
+
+
+</script>
+
+
+
+</html>
