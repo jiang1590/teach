@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrap"></div>
+</body>
+<!-- <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script> -->
+<script type="text/javascript">
+    // 进行网络请求
+    // ajax:一个方便我们和服务器之间进行网络通信的一个工具
+    // 1.创建XMLHttpRequest对象
+    var request = new XMLHttpRequest();
+    // 2.调用open函数，请求方式是GET还是POST，封装网址，是否是异步请求
+
+    request.open("GET","http://apis.baidu.com/apistore/weatherservice/citylist?cityname=北京",true);
+    request.setRequestHeader("apikey", "0d6a5d637befba6517e003dbeb7090e0");
+    // 3.send，将open里面所包含的网址和请求方式GET发送给服务器
+    request.send();
+
+    // 4.监听readyState属性值的变化，得知当前是什么样的状态
+    request.onreadystatechange = function () {
+        if(request.readyState == 4 && request.status == 200) {
+            // 拿到数据
+            // console.log(request.responseText);
+            // request.responseText是一个字符串，需要我们转换为js对象
+            var jsData = JSON.parse(request.responseText);
+            var arr = jsData.retData;
+            console.log(arr);
+            // 将数据添加到界面上
+        }
+    }
+    // 网络头
+    // header
+
+    // 网址参数
+    // URLParaments
+
+
+
+</script>
+</html>
